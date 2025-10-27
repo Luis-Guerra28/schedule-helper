@@ -1,8 +1,41 @@
+import { Box, Paper } from '@mui/material'
+import { generateHoursRange } from './utils/generateHoursRanges'
+import { styled } from '@mui/material/styles'
+
 function App() {
+  const hours = generateHoursRange()
+  const weekDays = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo']
+
+  const Item = styled(Paper)(({ theme }) => ({
+    backgroundColor: '#fff',
+    padding: theme.spacing(1),
+    textAlign: 'center',
+    ...theme.typography.body2,
+    color: (theme.vars ?? theme).palette.text.secondary,
+    ...theme.applyStyles('dark', {
+      backgroundColor: '#1A2027',
+    }),
+  }));
+
 
   return (
     <>
-      <h1>Hello world</h1>
+      <Box sx={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(8, 1fr)',
+        gridTemplateRows: 'repeat(6, 1fr)',
+        gap: '6px',
+
+      }}>
+        <Item>---</Item>
+        {weekDays.map(day => <Item>{day}</Item>)}
+        {hours.map((hour, index) => (
+          <Item sx={{ gridArea: `${index + 2} / 1 / ${index + 3} / 2` }}>
+            {hour.replace('-', '')}
+          </Item>
+        ))}
+
+      </Box>
     </>
   )
 }
