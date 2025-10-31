@@ -2,10 +2,10 @@ import React from 'react'
 import { Box, Paper } from '@mui/material'
 import { styled } from '@mui/material/styles'
 import { generateHoursRange } from '../utils/generateHoursRanges'
+import { weekDays } from '../utils/constants'
 
 export function ScheduleGrid() {
   const hours = generateHoursRange()
-  const weekDays = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo']
 
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: '#fff',
