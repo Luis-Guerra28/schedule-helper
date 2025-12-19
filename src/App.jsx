@@ -1,13 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { Box } from '@mui/material'
 import { EventsForm } from './components/EventsForm'
-import { useState } from 'react'
 import Calendar from './components/Calendar'
 
 function App() {
 
   const events = [
     {
-      day: "JUEVES",
+      day: "Lunes",
       title: "Matemáticas Avanzadas",
       startTime: "08:00",
       endTime: "09:30"
@@ -19,8 +19,8 @@ function App() {
       endTime: "11:00"
     },
     {
-      day: "JUEVES",
-      title: "Descanso/Almuerzo",
+      day: "Martes",
+      title: "Electrotecnia",
       startTime: "11:00",
       endTime: "12:00"
     },
@@ -48,8 +48,12 @@ function App() {
 
   return (
     <>
-      <EventsForm />
-      <Calendar key='calendar' eventList={eventList} />
+      <Box sx={{ height: '100vh', display: 'flex', flexDirection: 'row' }}>
+        <EventsForm />
+        <Box sx={{ flex: 1 }}>
+          <Calendar key='calendar' eventList={eventList} />
+        </Box>
+      </Box>
     </>
   )
 }

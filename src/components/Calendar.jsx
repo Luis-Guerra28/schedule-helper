@@ -1,7 +1,7 @@
 import React from 'react'
+import { Box } from '@mui/material'
 import FullCalendar from '@fullcalendar/react'
 import timeGridPlugin from '@fullcalendar/timegrid'
-import { Paper } from '@mui/material'
 
 const DAYS = Object.freeze({
   DOMINGO: 0,
@@ -25,24 +25,16 @@ export default function Calendar({ eventList }) {
       //      //endRecur: "2026-06-01"    // (Opcional) Cuándo deja de repetirse
     }
   })
-  console.log(events)
-
-
-
-
-
-
-
-
 
   return (
-    <Paper sx={{ mx: 10 }}>
+    <Box sx={{ height: '100%', width: '100%' }}>
       <FullCalendar
         plugins={[timeGridPlugin]}
         initialView="timeGridWeek"
         weekends={false}
         events={events}
+        height='100%'
       />
-    </Paper>
+    </Box>
   )
 }

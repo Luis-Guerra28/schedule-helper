@@ -4,11 +4,9 @@ import { weekDays } from '../utils/constants'
 
 
 export function EventsForm() {
-
-
   return (
     <>
-      <Box sx={{ padding: 5 }}>
+      <Box sx={{ display: 'flex', flexDirection: 'column', padding: 5 }}>
         <TextField
           variant='outlined'
           label='Materia'
@@ -31,7 +29,7 @@ export function EventsForm() {
             <MenuItem value={day}>{day}</MenuItem>
           ))}
         </Select>
-        <Button variant='contained' sx={{ height: '100%' }}>Crear</Button>
+        <Button variant='contained' >Crear</Button>
       </Box>
     </>
   )
