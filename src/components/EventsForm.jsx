@@ -25,7 +25,7 @@ export function EventsForm({ setEventList, eventList }) {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <Box sx={{ display: 'flex', flexDirection: 'column', padding: 5 }}>
+        <Box sx={{ display: 'flex', flexDirection: 'column' }}>
           <TextField
             variant='outlined'
             label='Materia'

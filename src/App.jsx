@@ -49,8 +49,8 @@ function App() {
 
   return (
     <>
-      <Box sx={{ height: '100vh', display: 'flex', flexDirection: 'row' }}>
-        <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+      <Box sx={{ height: '100vh', display: 'flex', flexDirection: 'row', padding: 2 }}>
+        <Box sx={{ display: 'flex', flexDirection: 'column', margin: 2 }}>
           <EventsForm setEventList={setEventList} eventList={eventList} />
           <EventList events={eventList} setEvents={setEventList} />
         </Box>
