@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Box } from '@mui/material'
 import { EventsForm } from './components/EventsForm'
+import { EventList } from './components/EventList'
 import Calendar from './components/Calendar'
 
 function App() {
@@ -44,12 +45,15 @@ function App() {
     }
   ]
 
-  const [eventList] = useState(events)
+  const [eventList, setEventList] = useState(events)
 
   return (
     <>
       <Box sx={{ height: '100vh', display: 'flex', flexDirection: 'row' }}>
-        <EventsForm />
+        <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+          <EventsForm setEventList={setEventList} eventList={eventList} />
+          <EventList events={eventList} setEvents={setEventList} />
+        </Box>
         <Box sx={{ flex: 1 }}>
           <Calendar key='calendar' eventList={eventList} />
         </Box>
