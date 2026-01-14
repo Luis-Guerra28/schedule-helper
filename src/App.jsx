@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
-import { Box } from '@mui/material'
+import { Box, Button } from '@mui/material'
+import AddIcon from '@mui/icons-material/Add'
 import { EventsForm } from './components/EventsForm'
 import { EventList } from './components/EventList'
+import { BasicModal } from './components/BasicModal'
 import Calendar from './components/Calendar'
 
 function App() {
@@ -46,18 +48,35 @@ function App() {
   ]
 
   const [eventList, setEventList] = useState(events)
+  const [showModal, setShowModal] = useState(false)
+
+  const handleOpen = () => setShowModal(true)
+  const handleClose = () => setShowModal(false)
 
   return (
     <>
-      <Box sx={{ height: '100vh', display: 'flex', flexDirection: 'row', padding: 2 }}>
+      <Box sx={{
+        height: '100vh',
+        display: 'flex',
+        flexDirection: { xs: 'column', md: 'row' },
+        padding: 2
+      }}>
         <Box sx={{ display: 'flex', flexDirection: 'column', margin: 2 }}>
-          <EventsForm setEventList={setEventList} eventList={eventList} />
+          <Button
+            variant='contained'
+            startIcon={<AddIcon />}
+            onClick={handleOpen}
+            sx={{ alignSelf: 'flex-start' }}
+          >Crear evento</Button>
           <EventList events={eventList} setEvents={setEventList} />
         </Box>
         <Box sx={{ flex: 1 }}>
           <Calendar key='calendar' eventList={eventList} />
         </Box>
-      </Box>
+      </Box >
+      <BasicModal showModal={showModal} handleClose={handleClose}>
+        <EventsForm setEventList={setEventList} eventList={eventList} handleClose={handleClose} />
+      </BasicModal>
     </>
   )
 }
