@@ -56,7 +56,7 @@ function App() {
   return (
     <>
       <Box sx={{
-        height: '100vh',
+        minHeight: '100vh',
         display: 'flex',
         flexDirection: { xs: 'column', md: 'row' },
         padding: 2
@@ -70,7 +70,7 @@ function App() {
           >Crear evento</Button>
           <EventList events={eventList} setEvents={setEventList} />
         </Box>
-        <Box sx={{ flex: 1 }}>
+        <Box sx={{ flex: 1, minHeight: '50vh' }}>
           <Calendar key='calendar' eventList={eventList} />
         </Box>
       </Box >

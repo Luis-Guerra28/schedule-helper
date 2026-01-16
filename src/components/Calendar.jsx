@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box } from '@mui/material'
+import { Box, useMediaQuery, useTheme } from '@mui/material'
 import FullCalendar from '@fullcalendar/react'
 import timeGridPlugin from '@fullcalendar/timegrid'
 
@@ -14,6 +14,8 @@ const DAYS = Object.freeze({
 })
 
 export default function Calendar({ eventList }) {
+  const theme = useTheme()
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'))
   const events = eventList.map((event) => {
 
     return {
@@ -33,7 +35,8 @@ export default function Calendar({ eventList }) {
         initialView="timeGridWeek"
         weekends={false}
         events={events}
-        height='100%'
+
+        height={isMobile ? 'auto' : '100%'}
       />
     </Box>
   )
